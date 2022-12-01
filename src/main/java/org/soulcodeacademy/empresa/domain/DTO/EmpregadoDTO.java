@@ -1,9 +1,10 @@
 package org.soulcodeacademy.empresa.domain.DTO;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
+
+
+import javax.validation.constraints.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class EmpregadoDTO {
     @NotNull(message = "Nome é obrigatório")
@@ -14,6 +15,46 @@ public class EmpregadoDTO {
     private String email;
 
     @NotNull(message = "Campo Salario é obrigatório")
-    @Min(value = 500,message = "Salario Abaixo de 500 ")
+    @Min(value = 500,message = "Campo salário inválido")
+    @Max(value = 1000000, message = "Campo salário inválido")
     private Double salario;
+
+    @NotNull(message = "campo endereço  inválido")
+    private Integer endereco;
+
+
+
+    public String getNome() {
+        return Nome;
+    }
+
+    public void setNome(String nome) {
+        Nome = nome;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Double getSalario() {
+        return salario;
+    }
+
+    public void setSalario(Double salario) {
+        this.salario = salario;
+    }
+
+    public Integer getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Integer endereco) {
+        this.endereco = endereco;
+    }
+
+
 }
