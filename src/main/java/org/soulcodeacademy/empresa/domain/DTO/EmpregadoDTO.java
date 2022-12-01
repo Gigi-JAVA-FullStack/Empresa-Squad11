@@ -19,7 +19,7 @@ public class EmpregadoDTO {
     @Max(value = 1000000, message = "Campo salário inválido")
     private Double salario;
 
-    @NotNull(message = "campo endereço  inválido")
+
     private Integer endereco;
 
 
