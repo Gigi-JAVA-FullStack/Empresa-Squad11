@@ -14,6 +14,8 @@ public class EmpregadoService {
 
     @Autowired
     private EmpregadoRepository serviceEmpregado;
+    @Autowired
+    private EnderecoService enderecoService;
 
     public List<Empregado> listarTodos(){
         return this.serviceEmpregado.findAll();
@@ -30,7 +32,7 @@ public class EmpregadoService {
     }
     public Empregado atualizar(Integer idEmpregado, EmpregadoDTO dto){
         Empregado empregadoAtual = this.getEmpregado(idEmpregado);
-        Endereco enderecoNovo = this.EnderecoService.getEndereco(dto.getEndereco());
+        Endereco enderecoNovo = this.enderecoService.getEndereco(dto.getEndereco());
         empregadoAtual.setNome(dto.getNome());
         empregadoAtual.setEndereco(enderecoNovo);
         empregadoAtual.setEmail(dto.getEmail());
