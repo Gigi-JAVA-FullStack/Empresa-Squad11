@@ -30,8 +30,8 @@ public class Empregado {
     public Empregado() {
     }
 
-    public Empregado(Integer idEmpregado, String nome, String email, Double salario) {
-        this.idEmpregado = idEmpregado;
+    public Empregado( String nome, String email, Double salario) {
+
         this.nome = nome;
         this.email = email;
         this.salario = salario;
