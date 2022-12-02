@@ -6,6 +6,7 @@ import org.soulcodeacademy.empresa.services.EmpregadoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -23,7 +24,7 @@ public Empregado EmpregadoPorId(@PathVariable Integer id){
         return this.empregadoService.getEmpregado(id);
     }
     @PostMapping("/newEmpregado")
-    public Empregado NewEmpregado(@RequestBody EmpregadoDTO dto){
+    public Empregado NewEmpregado(@Valid @RequestBody EmpregadoDTO dto){
         return this.empregadoService.salvar(dto);
 
     }
