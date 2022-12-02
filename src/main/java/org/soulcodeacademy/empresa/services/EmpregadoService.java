@@ -50,8 +50,8 @@ public class EmpregadoService {
         return atualizado;
     }
     public void deletar(Integer idEmpregado) {
-        Empregado cargo = this.getEmpregado(idEmpregado);
+        Empregado empregado = this.getEmpregado(idEmpregado);
 
-        this.serviceEmpregado.delete(cargo);
+        this.serviceEmpregado.delete(empregado);
     }
 }

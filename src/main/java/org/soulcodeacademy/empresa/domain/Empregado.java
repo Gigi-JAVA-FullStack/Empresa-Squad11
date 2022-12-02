@@ -20,7 +20,7 @@ public class Empregado {
     private Double salario;
 
     @OneToOne // 1:1 (Empregado-Endereço)
-    @JoinColumn(name = "id_endereco", nullable = false) // renomeia a coluna da FK
+    @JoinColumn(name = "id_endereco") // renomeia a coluna da FK
     private Endereco endereco;
 
     // Esta lista representa quais projetos o empregado participa
