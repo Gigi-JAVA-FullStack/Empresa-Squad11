@@ -22,7 +22,8 @@ public class EmpregadoDTO {
 
     private Integer endereco;
 
-
+    //Nao eh obrigatorio ao empregado, reconhecido pelo IdProjeto
+    private Integer idProjeto;
 
     public String getNome() {
         return Nome;
@@ -56,5 +57,11 @@ public class EmpregadoDTO {
         this.endereco = endereco;
     }
 
+    public Integer getIdProjeto() {
+        return idProjeto;
+    }
 
+    public void setIdProjeto(Integer idProjeto) {
+        this.idProjeto = idProjeto;
+    }
 }
