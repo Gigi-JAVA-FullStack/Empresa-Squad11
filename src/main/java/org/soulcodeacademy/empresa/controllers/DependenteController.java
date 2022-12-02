@@ -1,6 +1,6 @@
 package org.soulcodeacademy.empresa.controllers;
 
-
+import org.soulcodeacademy.empresa.domain.DTO.DependenteDTO;
 import org.soulcodeacademy.empresa.domain.Dependente;
 import org.soulcodeacademy.empresa.services.DependenteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.soulcodeacademy.empresa.domain.DTO.DependenteDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
