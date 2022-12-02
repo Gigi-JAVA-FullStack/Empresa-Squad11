@@ -1,18 +1,20 @@
 package org.soulcodeacademy.empresa.controllers;
-
+import org.soulcodeacademy.empresa.domain.DTO.DependenteDTO;
 import org.soulcodeacademy.empresa.domain.Dependente;
 import org.soulcodeacademy.empresa.services.DependenteService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 public class DependenteController {
- @Autowired
+    @Autowired
     private DependenteService dependenteService;
     @GetMapping("/dependentes")
     public List<Dependente> listar() {
+
         return this.dependenteService.listar();
     }
 
