@@ -1,5 +1,10 @@
 package org.soulcodeacademy.empresa.controllers;
 
+import org.soulcodeacademy.empresa.domain.Dependente;
+import org.soulcodeacademy.empresa.services.DependenteService;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
