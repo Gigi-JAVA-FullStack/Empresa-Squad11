@@ -1,6 +1,6 @@
 package org.soulcodeacademy.empresa.controllers;
 
-<<<<<<< HEAD
+
 import org.soulcodeacademy.empresa.domain.Dependente;
 import org.soulcodeacademy.empresa.services.DependenteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import java.util.List;
->>>>>>> 2fffc3a673a649dbb43dac829bd4440cd1111282
+
 
 import javax.validation.Valid;
 import java.util.List;
