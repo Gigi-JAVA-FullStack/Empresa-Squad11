@@ -5,11 +5,9 @@ import org.soulcodeacademy.empresa.domain.DTO.DependenteDTO;
 import org.soulcodeacademy.empresa.domain.Dependente;
 import org.soulcodeacademy.empresa.domain.Empregado;
 import org.soulcodeacademy.empresa.repositories.DependenteRepository;
-import org.soulcodeacademy.empresa.repositories.EmpregadoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.management.RuntimeErrorException;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,7 +16,7 @@ public class DependenteService {
 
     @Autowired
     private DependenteRepository dependenteRepository;
-
+    @Autowired
     private EmpregadoService empregadoService;
 
 
@@ -37,16 +35,19 @@ public class DependenteService {
     }
 
     public Dependente salvar(DependenteDTO dto) {
+        Empregado empregado = this.empregadoService.getEmpregado(dto.getResponsavel());
         Dependente dependente = new Dependente(null, dto.getNome(), dto.getIdade());
-        dependente.setResponsavel(this.empregadoService.getEmpregado(dto.getIdEmpregado()));
+        dependente.setResponsavel(empregado);
         Dependente dependenteSalvo = this.dependenteRepository.save(dependente);
         return dependenteSalvo;
     }
 
     public Dependente atualizar(Integer idDependente, DependenteDTO dto) {
         Dependente dependenteAtual = this.getDependente(idDependente);
+        Empregado empregado = this.empregadoService.getEmpregado(dto.getResponsavel());
         dependenteAtual.setNome(dto.getNome());
         dependenteAtual.setIdade(dto.getIdade());
+        dependenteAtual.setResponsavel(empregado);
 
        return this.dependenteRepository.save(dependenteAtual);
 
