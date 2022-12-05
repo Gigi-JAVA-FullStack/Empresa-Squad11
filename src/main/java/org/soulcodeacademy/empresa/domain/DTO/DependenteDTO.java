@@ -1,16 +1,19 @@
 package org.soulcodeacademy.empresa.domain.DTO;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 public class DependenteDTO {
     @NotBlank(message = "Nome é obrigatório")
     private String nome;
 
-    @NotBlank(message = "Idade é obrigatório")
+
+    @NotEmpty(message = "id empregado obrigatorio")
     private Integer idade;
 
-    @NotNull(message = "idEmpregado é obrigatório")
+
+    @NotEmpty(message = "id empregado obrigatorio")
     private Integer idEmpregado;
 
     public String getNome() {
