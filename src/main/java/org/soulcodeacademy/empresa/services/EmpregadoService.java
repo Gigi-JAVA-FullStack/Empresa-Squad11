@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class EmpregadoService {
@@ -32,9 +33,17 @@ public class EmpregadoService {
         return this.serviceEmpregado.findAll();
     }
     public Empregado getEmpregado(Integer idEmpregado){
-        return this.serviceEmpregado.findById(idEmpregado).orElseThrow(()-> new RuntimeException("Empregado não encontrado!"));
+        //return this.serviceEmpregado.findById(idEmpregado).orElseThrow(()-> new RuntimeException("Empregado não encontrado!"));
+        Optional<Empregado> empregado = this.serviceEmpregado.findById(idEmpregado);
 
+        if (empregado.isEmpty()) {
+            // lançar exceção
+            throw new RuntimeException("Empregado não encontrado!");
+        } else {
+            return empregado.get();
+        }
     }
+
     public Empregado salvar(EmpregadoDTO dto) {
         // Verificar se existe um cliente com este ID
         Empregado newEmpregado = new Empregado(dto.getNome(), dto.getEmail(), dto.getSalario());
