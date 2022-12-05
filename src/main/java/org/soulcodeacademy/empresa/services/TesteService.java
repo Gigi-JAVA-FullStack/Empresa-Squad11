@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
-import java.util.ArrayList;
+
 import java.util.List;
 
 @Service
@@ -32,9 +32,12 @@ public class TesteService {
     @PostConstruct
     public void testarEntidades() {
 
-        Empregado empregado1 = new Empregado("José Carlos", "jc@gmail.com", 7000.0);
-        Empregado empregado2 = new Empregado("José Antonio", "ja@gmail.com", 8500.0);
-        Empregado empregado3 = new Empregado("Cláudio José", "cj@gmail.com", 8500.0);
+
+        Empregado empregado1 = new Empregado( "José Carlos", "jc@gmail.com", 7000.0);
+        Empregado empregado2 = new Empregado( "José Antonio", "ja@gmail.com", 8500.0);
+        Empregado empregado3 = new Empregado( "Cláudio José", "cj@gmail.com", 8500.0);
+
+
 
 
         Endereco endereco1 = new Endereco(null, "Ubajara", "CE");
@@ -74,6 +77,6 @@ public class TesteService {
         this.empregadoRepository.save(empregado1);
         this.empregadoRepository.save(empregado2);
 
-      
+
     }
 }
