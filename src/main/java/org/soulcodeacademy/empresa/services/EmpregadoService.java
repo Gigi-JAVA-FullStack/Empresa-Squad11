@@ -1,9 +1,11 @@
 package org.soulcodeacademy.empresa.services;
 
 import org.soulcodeacademy.empresa.domain.DTO.EmpregadoDTO;
+import org.soulcodeacademy.empresa.domain.Dependente;
 import org.soulcodeacademy.empresa.domain.Empregado;
 import org.soulcodeacademy.empresa.domain.Endereco;
 import org.soulcodeacademy.empresa.domain.Projeto;
+import org.soulcodeacademy.empresa.repositories.DependenteRepository;
 import org.soulcodeacademy.empresa.repositories.EmpregadoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,6 +14,9 @@ import java.util.List;
 
 @Service
 public class EmpregadoService {
+
+    @Autowired
+    private DependenteRepository dependenteRepository;
 
     @Autowired
     private EmpregadoRepository serviceEmpregado;
@@ -40,19 +45,35 @@ public class EmpregadoService {
 
       Endereco enderecoNovo = this.enderecoService.getEndereco(dto.getEndereco());
 
-        Projeto projetoNovo = this.projetoService.getProjeto(dto.getIdProjeto());
+
         empregadoAtual.setNome(dto.getNome());
         empregadoAtual.setEndereco(enderecoNovo);
-        empregadoAtual.setProjetos(List.of(projetoNovo));
+
 
         empregadoAtual.setEmail(dto.getEmail());
         empregadoAtual.setSalario(dto.getSalario());
         Empregado atualizado = this.serviceEmpregado.save(empregadoAtual);
         return atualizado;
     }
-    public void deletar(Integer idEmpregado) {
-        Empregado empregado = this.getEmpregado(idEmpregado);
+    public Empregado inserirNoProjeto(Integer idEmpregado, EmpregadoDTO dto){
+        Empregado empregadoAtual = this.getEmpregado(idEmpregado);
+        Projeto projetoNovo = this.projetoService.getProjeto(dto.getIdProjeto());
+        empregadoAtual.setProjetos(List.of(projetoNovo));
+        return this.serviceEmpregado.save(empregadoAtual);
+    }
+    public void retirarDoProjeto(Integer idEmpregado, Integer idProjeto){
+        Empregado empregadoAtual = this.getEmpregado(idEmpregado);
+        Projeto projeto = this.projetoService.getProjeto(idProjeto);
 
+        empregadoAtual.getProjetos().remove(projeto);
+
+    }
+    public void deletar(Integer idEmpregado) {
+
+        Empregado empregado = this.getEmpregado(idEmpregado);
+        List<Dependente> dependentes = this.dependenteRepository.findByResponsavel(empregado);
+
+        this.dependenteRepository.deleteAll(dependentes);
         this.serviceEmpregado.delete(empregado);
     }
 }
