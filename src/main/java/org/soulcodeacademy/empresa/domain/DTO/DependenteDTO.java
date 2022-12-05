@@ -1,7 +1,6 @@
 package org.soulcodeacademy.empresa.domain.DTO;
 
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 public class DependenteDTO {
@@ -14,7 +13,7 @@ public class DependenteDTO {
 
 
     @NotNull(message = "id empregado obrigatorio")
-    private Integer idEmpregado;
+    private Integer responsavel;
 
     public String getNome() {
         return nome;
@@ -32,11 +31,11 @@ public class DependenteDTO {
         this.idade = idade;
     }
 
-    public Integer getIdEmpregado() {
-        return idEmpregado;
+    public Integer getResponsavel() {
+        return responsavel;
     }
 
-    public void setIdEmpregado(Integer idEmpregado) {
-        this.idEmpregado = idEmpregado;
+    public void setResponsavel(Integer responsavel) {
+        this.responsavel = responsavel;
     }
 }
