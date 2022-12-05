@@ -37,7 +37,8 @@ public class EmpregadoService {
     }
     public Empregado atualizar(Integer idEmpregado, EmpregadoDTO dto){
         Empregado empregadoAtual = this.getEmpregado(idEmpregado);
-        Endereco enderecoNovo = this.enderecoService.getEndereco(dto.getEndereco());
+
+      Endereco enderecoNovo = this.enderecoService.getEndereco(dto.getEndereco());
 
         Projeto projetoNovo = this.projetoService.getProjeto(dto.getIdProjeto());
         empregadoAtual.setNome(dto.getNome());

@@ -29,7 +29,7 @@ public Empregado EmpregadoPorId(@PathVariable Integer id){
 
     }
     @PutMapping("/Empregado/{id}")
-    public  Empregado AtualizarEmpregado(@PathVariable Integer id,@RequestBody EmpregadoDTO dto){
+    public  Empregado AtualizarEmpregado(@PathVariable Integer id,@Valid @RequestBody EmpregadoDTO dto){
         return  this.empregadoService.atualizar(id, dto);
     }
     @DeleteMapping("/Empregado/{id}")
@@ -38,3 +38,4 @@ public Empregado EmpregadoPorId(@PathVariable Integer id){
     }
 
 }
+//cascade.cascadeType.remove ->

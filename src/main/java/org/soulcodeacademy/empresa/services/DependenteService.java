@@ -19,6 +19,8 @@ public class DependenteService {
     @Autowired
     private DependenteRepository dependenteRepository;
 
+    private EmpregadoService empregadoService;
+
 
     public List<Dependente> listar() {
         return this.dependenteRepository.findAll();
@@ -36,6 +38,7 @@ public class DependenteService {
 
     public Dependente salvar(DependenteDTO dto) {
         Dependente dependente = new Dependente(null, dto.getNome(), dto.getIdade());
+        dependente.setResponsavel(this.empregadoService.getEmpregado(dto.getIdEmpregado()));
         Dependente dependenteSalvo = this.dependenteRepository.save(dependente);
         return dependenteSalvo;
     }
@@ -45,8 +48,8 @@ public class DependenteService {
         dependenteAtual.setNome(dto.getNome());
         dependenteAtual.setIdade(dto.getIdade());
 
-        Dependente atualizado = this.dependenteRepository.save(dependenteAtual);
-        return atualizado;
+       return this.dependenteRepository.save(dependenteAtual);
+
     }
 
     public void deletar(Integer idDependente) {
