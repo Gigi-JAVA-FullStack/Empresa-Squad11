@@ -43,14 +43,13 @@ public class DependenteService {
     }
 
     public Dependente atualizar(Integer idDependente, DependenteDTO dto) {
-        Dependente dependenteAtual = this.getDependente(idDependente);
-        Empregado empregado = this.empregadoService.getEmpregado(dto.getResponsavel());
-        dependenteAtual.setNome(dto.getNome());
-        dependenteAtual.setIdade(dto.getIdade());
-        dependenteAtual.setResponsavel(empregado);
+      Dependente dependenteAtual = getDependente(idDependente);
+      Empregado responsavel = this.empregadoService.getEmpregado(dto.getResponsavel());
+      dependenteAtual.setResponsavel(responsavel);
+      dependenteAtual.setNome(dto.getNome());
+      dependenteAtual.setIdade(dto.getIdade());
 
-       return this.dependenteRepository.save(dependenteAtual);
-
+      return this.dependenteRepository.save(dependenteAtual);
     }
 
     public void deletar(Integer idDependente) {

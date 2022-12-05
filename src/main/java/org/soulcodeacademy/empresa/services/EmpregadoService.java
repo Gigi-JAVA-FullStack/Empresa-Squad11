@@ -81,7 +81,9 @@ public class EmpregadoService {
     public void deletar(Integer idEmpregado) {
 
         Empregado empregado = this.getEmpregado(idEmpregado);
+        empregado.getProjetos().clear();
         List<Dependente> dependentes = this.dependenteRepository.findByResponsavel(empregado);
+
 
         this.dependenteRepository.deleteAll(dependentes);
         this.serviceEmpregado.delete(empregado);
