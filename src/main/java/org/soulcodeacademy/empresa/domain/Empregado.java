@@ -19,7 +19,8 @@ public class Empregado {
     @Column(nullable = false)
     private Double salario;
 
-    @OneToOne // 1:1 (Empregado-Endereço)
+    @OneToOne(cascade = CascadeType.REMOVE) // 1:1 (Empregado-Endereço)
+    // cascate = uma ação desencadeia outra ação, remover o empregado vai remover seus dependentes, indicado para rel 1:1
     @JoinColumn(name = "id_endereco") // renomeia a coluna da FK
     private Endereco endereco;
 

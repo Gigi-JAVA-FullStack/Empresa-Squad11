@@ -16,7 +16,7 @@ public class Dependente {
 
     @ManyToOne
     @JoinColumn(name = "id_responsavel", nullable = false) // Cria a coluna "id_responsavel" em dependente
-    private Empregado responsavel;
+    private Empregado idEmpregado;
 
     public Dependente() {}
 
@@ -51,10 +51,10 @@ public class Dependente {
     }
 
     public Empregado getResponsavel() {
-        return responsavel;
+        return idEmpregado;
     }
 
     public void setResponsavel(Empregado responsavel) {
-        this.responsavel = responsavel;
+        this.idEmpregado = responsavel;
     }
 }

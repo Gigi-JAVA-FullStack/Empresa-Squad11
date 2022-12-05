@@ -9,11 +9,11 @@ public class DependenteDTO {
     private String nome;
 
 
-    @NotEmpty(message = "id empregado obrigatorio")
+    @NotNull(message = "id empregado obrigatorio")
     private Integer idade;
 
 
-    @NotEmpty(message = "id empregado obrigatorio")
+    @NotNull(message = "id empregado obrigatorio")
     private Integer idEmpregado;
 
     public String getNome() {
