@@ -66,15 +66,16 @@ public class EmpregadoService {
     }
     public Empregado inserirNoProjeto(Integer idEmpregado,EmpregadoDTO dto){
         Empregado empregadoAtual = this.getEmpregado(idEmpregado);
-        Projeto projetoNovo = this.projetoService.getProjeto(dto.getIdProjeto());
-        empregadoAtual.setProjetos(List.of(projetoNovo));
+        Projeto projetoNovo = this.projetoService.getProjeto(dto.getProjetos());
+        empregadoAtual.setProjetos(projetoNovo);
         return this.serviceEmpregado.save(empregadoAtual);
     }
-    public void retirarDoProjeto(Integer idEmpregado, Integer idProjeto){
+    public Empregado retirarDoProjeto(Integer idEmpregado, Integer idProjeto){
         Empregado empregadoAtual = this.getEmpregado(idEmpregado);
         Projeto projeto = this.projetoService.getProjeto(idProjeto);
 
         empregadoAtual.getProjetos().remove(projeto);
+        return this.serviceEmpregado.save(empregadoAtual);
 
     }
     public void deletar(Integer idEmpregado) {

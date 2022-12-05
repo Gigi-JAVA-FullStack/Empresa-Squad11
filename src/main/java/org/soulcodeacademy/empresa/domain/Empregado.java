@@ -82,7 +82,7 @@ public class Empregado {
         return projetos;
     }
 
-    public void setProjetos(List<Projeto> projetos) {
-        this.projetos = projetos;
+    public void setProjetos(Projeto projeto) {
+        this.projetos.add(projeto) ;
     }
 }

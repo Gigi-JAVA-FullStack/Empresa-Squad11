@@ -29,8 +29,13 @@ public Empregado EmpregadoPorId(@PathVariable Integer id){
 
     }
     @PutMapping("/empregado/{idEmpregado}/projeto")
-    public Empregado InserirProjeto(@PathVariable Integer idEmpregado,@RequestBody EmpregadoDTO dto){
+    public Empregado InserirProjeto(@PathVariable Integer idEmpregado,@Valid @RequestBody EmpregadoDTO dto){
             return this.empregadoService.inserirNoProjeto(idEmpregado,dto);
+    }
+
+    @DeleteMapping("/empregado/{idEmpregado}/projeto/{idProjeto}")
+    public Empregado delete (@PathVariable Integer idEmpregado,@PathVariable Integer idProjeto ){
+        return this.empregadoService.retirarDoProjeto(idEmpregado,idProjeto);
     }
     @PutMapping("/Empregado/{id}")
     public  Empregado AtualizarEmpregado(@PathVariable Integer id,@Valid @RequestBody EmpregadoDTO dto){
