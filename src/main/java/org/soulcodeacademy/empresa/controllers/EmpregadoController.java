@@ -28,6 +28,10 @@ public Empregado EmpregadoPorId(@PathVariable Integer id){
         return this.empregadoService.salvar(dto);
 
     }
+    @PutMapping("/empregado/{idEmpregado}/projeto")
+    public Empregado InserirProjeto(@PathVariable Integer idEmpregado,@RequestBody EmpregadoDTO dto){
+            return this.empregadoService.inserirNoProjeto(idEmpregado,dto);
+    }
     @PutMapping("/Empregado/{id}")
     public  Empregado AtualizarEmpregado(@PathVariable Integer id,@Valid @RequestBody EmpregadoDTO dto){
         return  this.empregadoService.atualizar(id, dto);
@@ -36,6 +40,8 @@ public Empregado EmpregadoPorId(@PathVariable Integer id){
     public void deletarFuncionario(@PathVariable Integer id){
         this.empregadoService.deletar(id);
     }
+
+
 
 }
 //cascade.cascadeType.remove ->

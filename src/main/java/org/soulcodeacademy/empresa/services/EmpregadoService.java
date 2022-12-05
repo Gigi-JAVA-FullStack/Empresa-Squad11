@@ -64,7 +64,7 @@ public class EmpregadoService {
         Empregado atualizado = this.serviceEmpregado.save(empregadoAtual);
         return atualizado;
     }
-    public Empregado inserirNoProjeto(Integer idEmpregado, EmpregadoDTO dto){
+    public Empregado inserirNoProjeto(Integer idEmpregado,EmpregadoDTO dto){
         Empregado empregadoAtual = this.getEmpregado(idEmpregado);
         Projeto projetoNovo = this.projetoService.getProjeto(dto.getIdProjeto());
         empregadoAtual.setProjetos(List.of(projetoNovo));
