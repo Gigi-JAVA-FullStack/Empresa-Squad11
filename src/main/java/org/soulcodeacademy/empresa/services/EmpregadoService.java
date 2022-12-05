@@ -7,6 +7,7 @@ import org.soulcodeacademy.empresa.domain.Endereco;
 import org.soulcodeacademy.empresa.domain.Projeto;
 import org.soulcodeacademy.empresa.repositories.DependenteRepository;
 import org.soulcodeacademy.empresa.repositories.EmpregadoRepository;
+import org.soulcodeacademy.empresa.services.errors.RecursoNãoEncontradoError;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,7 +39,7 @@ public class EmpregadoService {
 
         if (empregado.isEmpty()) {
             // lançar exceção
-            throw new RuntimeException("Empregado não encontrado!");
+            throw new RecursoNãoEncontradoError("Empregado não encontrado!");
         } else {
             return empregado.get();
         }
@@ -82,6 +83,7 @@ public class EmpregadoService {
 
         Empregado empregado = this.getEmpregado(idEmpregado);
         empregado.getProjetos().clear();
+        empregado.setEndereco(null);
         List<Dependente> dependentes = this.dependenteRepository.findByResponsavel(empregado);
 
 

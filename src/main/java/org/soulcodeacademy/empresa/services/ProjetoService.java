@@ -7,6 +7,7 @@ import org.soulcodeacademy.empresa.domain.Projeto;
 
 import org.soulcodeacademy.empresa.repositories.EmpregadoRepository;
 import org.soulcodeacademy.empresa.repositories.ProjetoRepository;
+import org.soulcodeacademy.empresa.services.errors.RecursoNãoEncontradoError;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,7 +35,7 @@ public class ProjetoService {
     public Projeto getProjeto(Integer idProjeto){
         Optional<Projeto> projeto = this.projetoRepository.findById(idProjeto);
         if (projeto.isEmpty()) {
-            throw new RuntimeException("O projeto não foi encontrado");
+            throw new RecursoNãoEncontradoError("O projeto não foi encontrado");
         } else {
             return projeto.get(); // get() extrai o projeto
         }

@@ -3,6 +3,7 @@ package org.soulcodeacademy.empresa.services;
 import org.soulcodeacademy.empresa.domain.DTO.EnderecoDTO;
 import org.soulcodeacademy.empresa.domain.Endereco;
 import org.soulcodeacademy.empresa.repositories.EnderecoRepository;
+import org.soulcodeacademy.empresa.services.errors.RecursoNãoEncontradoError;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,7 +25,7 @@ public class EnderecoService {
     public Endereco getEndereco(Integer idEndereco) {
         Optional<Endereco> endereco = this.enderecoRepository.findById(idEndereco);
         if (endereco.isEmpty()) {
-            throw new RuntimeException("O endereço não foi encontrado");
+            throw new RecursoNãoEncontradoError("O endereço não foi encontrado");
         } else {
             return endereco.get(); // get() extrai o cargo do optional
         }
